@@ -10,10 +10,6 @@ class RentScreen extends StatefulWidget {
 class _RentScreenState extends State<RentScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Text('RentScreen'),
-      ),
-    );
+    return Scaffold(body: Center(child: Text('RentScreen')));
   }
 }

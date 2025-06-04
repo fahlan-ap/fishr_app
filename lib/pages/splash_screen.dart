@@ -12,7 +12,7 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   String? imageUrl;
-  final storageService = StorageService(); // inisialisasi service
+  final storageService = StorageService();
 
   @override
   void initState() {

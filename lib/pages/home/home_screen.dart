@@ -79,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    "View all..",
+                    "View all",
                     style: TextStyle(
                       color: Color(0xFF012748),
                       fontWeight: FontWeight.bold,
@@ -108,14 +108,17 @@ class _HomeScreenState extends State<HomeScreen> {
                   );
                 }
 
+                final products = snapshot.data!;
+                final limitedProducts = products.take(2).toList();
+
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: ListView.builder(
-                    itemCount: snapshot.data!.length,
+                    itemCount: limitedProducts.length,
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) {
-                      final product = snapshot.data![index];
+                      final product = limitedProducts[index];
                       final imageUrl = productService.getPublicImageUrl(product['image_path']);
 
                       return Column(

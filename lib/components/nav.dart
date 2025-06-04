@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:fishr_app/pages/home/home_screen.dart';
-import 'package:fishr_app/pages/home/rent_screen.dart';
-import 'package:fishr_app/pages/setting/history_screen.dart';
+import 'package:fishr_app/pages/home/list_screen.dart';
+import 'package:fishr_app/pages/setting/rent_screen.dart';
 import 'package:fishr_app/pages/setting/profile_screen.dart';
 
 class NavButton extends StatefulWidget {
@@ -17,8 +17,8 @@ class _NavButtonState extends State<NavButton> {
 
   final List<Widget> _pages = [
     HomeScreen(),
+    ListScreen(),
     RentScreen(),
-    HistoryScreen(),
     ProfileScreen(),
   ];
 
@@ -38,10 +38,7 @@ class _NavButtonState extends State<NavButton> {
         child: Container(
           decoration: BoxDecoration(
             border: Border(
-              top: BorderSide(
-                color: const Color(0xFF012748),
-                width: 2.0,
-              ),
+              top: BorderSide(color: const Color(0xFF012748), width: 2.0),
             ),
           ),
           child: AnimatedBottomNavigationBar(
