@@ -110,6 +110,7 @@ class _ListScreenState extends State<ListScreen> {
                                 brand: product['brand'],
                                 productName: product['type'],
                                 price: "Rp ${product['price']}/hari",
+                                idPancing: product['id'], // hidden tapi dipakai
                               ),
                             );
                           },

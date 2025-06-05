@@ -1,5 +1,7 @@
+import 'package:fishr_app/components/rental_form.dart';
 import 'package:flutter/material.dart';
 import 'package:fishr_app/components/feature_tile.dart';
+import 'package:get/get.dart';
 
 class ProductDetail extends StatelessWidget {
   final String imageUrl;
@@ -7,6 +9,7 @@ class ProductDetail extends StatelessWidget {
   final String productName;
   final String price;
   final double rating;
+  final int idPancing;
 
   const ProductDetail({
     super.key,
@@ -15,6 +18,7 @@ class ProductDetail extends StatelessWidget {
     required this.productName,
     required this.price,
     this.rating = 4.8,
+    required this.idPancing,
   });
 
   @override
@@ -25,13 +29,9 @@ class ProductDetail extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Column(
         children: [
-          // Gambar Produk
           Padding(
             padding: const EdgeInsets.only(top: 25, left: 16, right: 16),
-            child: Image.network(
-              imageUrl,
-              height: size.height * 0.25,
-            ),
+            child: Image.network(imageUrl, height: size.height * 0.25),
           ),
           const SizedBox(height: 25),
 
@@ -46,7 +46,6 @@ class ProductDetail extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Nama & rating
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -70,7 +69,7 @@ class ProductDetail extends StatelessWidget {
                             style: const TextStyle(color: Colors.white),
                           ),
                         ],
-                      )
+                      ),
                     ],
                   ),
 
@@ -93,12 +92,36 @@ class ProductDetail extends StatelessWidget {
                       physics: const NeverScrollableScrollPhysics(),
                       childAspectRatio: 1.1,
                       children: const [
-                        FeatureTile(icon: Icons.straighten, title: "Rod Length", value: "2.1 m"),
-                        FeatureTile(icon: Icons.cached, title: "Reel Type", value: "Spinning"),
-                        FeatureTile(icon: Icons.linear_scale, title: "Line Weight", value: "10–20 lb"),
-                        FeatureTile(icon: Icons.link, title: "Hook Size", value: "#2"),
-                        FeatureTile(icon: Icons.layers, title: "Material", value: "Carbon Fiber"),
-                        FeatureTile(icon: Icons.settings, title: "Gear Ratio", value: "5.2:1"),
+                        FeatureTile(
+                          icon: Icons.straighten,
+                          title: "Rod Length",
+                          value: "2.1 m",
+                        ),
+                        FeatureTile(
+                          icon: Icons.cached,
+                          title: "Reel Type",
+                          value: "Spinning",
+                        ),
+                        FeatureTile(
+                          icon: Icons.linear_scale,
+                          title: "Line Weight",
+                          value: "10–20 lb",
+                        ),
+                        FeatureTile(
+                          icon: Icons.link,
+                          title: "Hook Size",
+                          value: "#2",
+                        ),
+                        FeatureTile(
+                          icon: Icons.layers,
+                          title: "Material",
+                          value: "Carbon Fiber",
+                        ),
+                        FeatureTile(
+                          icon: Icons.settings,
+                          title: "Gear Ratio",
+                          value: "5.2:1",
+                        ),
                       ],
                     ),
                   ),
@@ -115,16 +138,33 @@ class ProductDetail extends StatelessWidget {
                         ),
                       ),
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.to(
+                            Get.to(() => RentalForm(
+                              idPancing: idPancing,
+                              imageUrl: imageUrl,
+                              productName: "$brand $productName",
+                              price: price,
+                            ))
+                          );
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFFFFA726),
-                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 20,
+                            vertical: 14,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
                         ),
-                        child: const Text("Book now", style: TextStyle(fontSize: 16, color: Colors.white)),
+                        child: const Text(
+                          "Book now",
+                          style: TextStyle(fontSize: 16, color: Colors.white),
+                        ),
                       ),
                     ],
-                  )
+                  ),
                 ],
               ),
             ),

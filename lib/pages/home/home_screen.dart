@@ -128,6 +128,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             brand: product['brand'],
                             productName: product['type'],
                             price: "Rp ${product['price']}/hari",
+                            idPancing: product['id'],
                           ),
                           const SizedBox(height: 12),
                         ],

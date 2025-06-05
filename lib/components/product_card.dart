@@ -6,6 +6,7 @@ class ProductCard extends StatelessWidget {
   final String brand;
   final String productName;
   final String price;
+  final int idPancing; // id disimpan tapi tidak ditampilkan
 
   const ProductCard({
     super.key,
@@ -13,6 +14,7 @@ class ProductCard extends StatelessWidget {
     required this.brand,
     required this.productName,
     required this.price,
+    required this.idPancing,
   });
 
   @override
@@ -27,6 +29,7 @@ class ProductCard extends StatelessWidget {
               brand: brand,
               productName: productName,
               price: price,
+              idPancing: idPancing,
             ),
           ),
         );
