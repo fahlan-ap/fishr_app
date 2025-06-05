@@ -1,4 +1,3 @@
-import 'package:fishr_app/components/nav.dart';
 import 'package:flutter/material.dart';
 import 'package:fishr_app/pages/splash_screen.dart';
 import 'package:get/get.dart';
@@ -21,7 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: NavButton(),
+      home: SplashScreen(),
     );
   }
 }
