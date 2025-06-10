@@ -50,15 +50,15 @@ class _RentalFormState extends State<RentalForm> {
         endDate: endDate!,
       );
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Rental berhasil dikirim!")),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text("Rental berhasil dikirim!")));
 
       Navigator.pop(context);
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Gagal menyimpan: $e")),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text("Gagal menyimpan: $e")));
     }
   }
 
@@ -128,7 +128,8 @@ class _RentalFormState extends State<RentalForm> {
               ListTile(
                 title: const Text("Start Date"),
                 subtitle: Text(
-                  startDate?.toLocal().toString().split(' ')[0] ?? 'Pilih tanggal',
+                  startDate?.toLocal().toString().split(' ')[0] ??
+                      'Pilih tanggal',
                 ),
                 trailing: const Icon(Icons.calendar_today),
                 onTap: () => _selectDate(context, true),
@@ -137,7 +138,8 @@ class _RentalFormState extends State<RentalForm> {
               ListTile(
                 title: const Text("End Date"),
                 subtitle: Text(
-                  endDate?.toLocal().toString().split(' ')[0] ?? 'Pilih tanggal',
+                  endDate?.toLocal().toString().split(' ')[0] ??
+                      'Pilih tanggal',
                 ),
                 trailing: const Icon(Icons.calendar_today),
                 onTap: () => _selectDate(context, false),
@@ -147,7 +149,10 @@ class _RentalFormState extends State<RentalForm> {
 
               // 💳 Metode Pembayaran
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 8,
+                ),
                 decoration: BoxDecoration(
                   color: Colors.grey.shade100,
                   borderRadius: BorderRadius.circular(12),
@@ -159,22 +164,13 @@ class _RentalFormState extends State<RentalForm> {
                     hint: const Text("Pilih metode pembayaran"),
                     isExpanded: true,
                     items: const [
-                      DropdownMenuItem(
-                        value: "Dana",
-                        child: Text("Dana"),
-                      ),
+                      DropdownMenuItem(value: "Dana", child: Text("Dana")),
                       DropdownMenuItem(
                         value: "E-Money",
                         child: Text("E-Money"),
                       ),
-                      DropdownMenuItem(
-                        value: "PayPal",
-                        child: Text("PayPal"),
-                      ),
-                      DropdownMenuItem(
-                        value: "Bank",
-                        child: Text("Bank"),
-                      ),
+                      DropdownMenuItem(value: "PayPal", child: Text("PayPal")),
+                      DropdownMenuItem(value: "Bank", child: Text("Bank")),
                     ],
                     onChanged: (value) {
                       setState(() {
@@ -185,12 +181,13 @@ class _RentalFormState extends State<RentalForm> {
                 ),
               ),
 
-              const SizedBox(height: 50),
+              const SizedBox(height: 150),
 
               // 📤 Tombol Submit
               Center(
                 child: ElevatedButton(
-                  onPressed: (startDate != null &&
+                  onPressed:
+                      (startDate != null &&
                           endDate != null &&
                           selectedPaymentMethod != null)
                       ? _submitRental
@@ -198,7 +195,9 @@ class _RentalFormState extends State<RentalForm> {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.orange.shade400,
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 50, vertical: 16),
+                      horizontal: 50,
+                      vertical: 16,
+                    ),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),
