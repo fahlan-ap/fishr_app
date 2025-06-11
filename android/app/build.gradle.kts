@@ -37,10 +37,24 @@ android {
 
     signingConfigs {
         create("release") {
-            keyAlias = keystoreProperties["keyAlias"] as String?
-            keyPassword = keystoreProperties["keyPassword"] as String?
-            storeFile = file(keystoreProperties["storeFile"] as String?)
-            storePassword = keystoreProperties["storePassword"] as String?
+            val storeFilePath = keystoreProperties["storeFile"]?.toString()
+            val storePassword = keystoreProperties["storePassword"]?.toString()
+            val keyAlias = keystoreProperties["keyAlias"]?.toString()
+            val keyPassword = keystoreProperties["keyPassword"]?.toString()
+
+            if (
+                storeFilePath != null &&
+                storePassword != null &&
+                keyAlias != null &&
+                keyPassword != null
+            ) {
+                storeFile = file("$storeFilePath")
+                this.storePassword = storePassword
+                this.keyAlias = keyAlias
+                this.keyPassword = keyPassword
+            } else {
+                throw GradleException("key.properties tidak lengkap atau ada nilai null!")
+            }
         }
     }
 
